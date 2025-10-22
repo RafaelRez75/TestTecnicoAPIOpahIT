@@ -1,0 +1,29 @@
+{
+  "name": "testtecnicoapiopahit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "test:report": "mochawesome-merge cypress/reports/*.json > cypress/reports/report.json && marge cypress/reports/report.json --reportDir cypress/reports/html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelRez75/TestTecnicoAPIOpahIT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafaelRez75/TestTecnicoAPIOpahIT/issues"
+  },
+  "homepage": "https://github.com/RafaelRez75/TestTecnicoAPIOpahIT#readme",
+  "devDependencies": {
+    "cypress": "^15.5.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.0"
+  }
+}
