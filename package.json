@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run",
+    "cy:run": "cypress run",
     "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
     "test:report": "mochawesome-merge cypress/reports/*.json > cypress/reports/report.json && marge cypress/reports/report.json --reportDir cypress/reports/html"
   },

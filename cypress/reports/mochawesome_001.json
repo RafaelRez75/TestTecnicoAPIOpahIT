@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-22T23:02:50.697Z",
+    "end": "2025-10-22T23:02:52.903Z",
+    "duration": 2206,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "af3b3687-5aa0-4bfd-9b5f-82c99308a403",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\usuarios.cy.js",
+      "file": "cypress\\e2e\\api\\usuarios.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ce1192d6-b04d-4509-b646-717e75f10161",
+          "title": "API Usuários - ServeRest",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve listar todos os usuários",
+              "fullTitle": "API Usuários - ServeRest Deve listar todos os usuários",
+              "timedOut": null,
+              "duration": 1293,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: '/usuarios'\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('usuarios');\n  expect(response.body.usuarios).to.be.an('array');\n});",
+              "err": {},
+              "uuid": "5aacdc19-5218-4345-b25d-52f3eff7164d",
+              "parentUUID": "ce1192d6-b04d-4509-b646-717e75f10161",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve criar um novo usuário",
+              "fullTitle": "API Usuários - ServeRest Deve criar um novo usuário",
+              "timedOut": null,
+              "duration": 331,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userData = {\n  nome: \"Usuario Teste\",\n  email: `teste${Date.now()}@qa.com`,\n  password: \"teste123\",\n  administrador: \"true\"\n};\ncy.createUser(userData).then(response => {\n  expect(response.status).to.eq(201);\n  expect(response.body).to.have.property('message', 'Cadastro realizado com sucesso');\n  expect(response.body).to.have.property('_id');\n});",
+              "err": {},
+              "uuid": "b85d35e7-f133-45c0-888f-b1e438ae18e5",
+              "parentUUID": "ce1192d6-b04d-4509-b646-717e75f10161",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar erro ao criar usuário com email duplicado",
+              "fullTitle": "API Usuários - ServeRest Deve retornar erro ao criar usuário com email duplicado",
+              "timedOut": null,
+              "duration": 375,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userData = {\n  nome: \"Usuario Duplicado\",\n  email: \"fulano@qa.com\",\n  // Email já existente\n  password: \"teste123\",\n  administrador: \"true\"\n};\ncy.createUser(userData).then(response => {\n  expect(response.status).to.eq(400);\n  expect(response.body).to.have.property('message', 'Este email já está sendo usado');\n});",
+              "err": {},
+              "uuid": "16912cf2-7ff5-42d4-a687-5ed5dfa18e7b",
+              "parentUUID": "ce1192d6-b04d-4509-b646-717e75f10161",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5aacdc19-5218-4345-b25d-52f3eff7164d",
+            "b85d35e7-f133-45c0-888f-b1e438ae18e5",
+            "16912cf2-7ff5-42d4-a687-5ed5dfa18e7b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1999,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

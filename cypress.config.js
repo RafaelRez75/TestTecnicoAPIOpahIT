@@ -11,7 +11,7 @@ module.exports = defineConfig({
   env: {
     API_BASE_URL: 'https://serverest.dev'
   },
-  reporter: 'mochawesome',
+  reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     reportDir: 'cypress/reports',
     overwrite: false,
