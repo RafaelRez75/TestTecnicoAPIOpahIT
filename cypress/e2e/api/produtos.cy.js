@@ -316,11 +316,13 @@ describe('API Produtos - ServeRest', () => {
 - ✅ Criar produto sem autenticação
 - ✅ Criar produto com campos inválidos (Sem Nome, Preço, Quantidade negativa)
 
+
   GET
 - ✅ Buscar produto por ID
 - ✅ Listar todos os produtos
 - ✅ Listar produtos por nome (Existente e não existente)
 - ✅ Buscar produto ID Inexistente
+
 
   PUT
 - ✅ Editar produto (admin)
