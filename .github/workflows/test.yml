@@ -1,0 +1,39 @@
+name: API Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Run tests with reporting
+      run: |
+        npm run test:ci
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: |
+          cypress/reports/
+          cypress/screenshots/
+          cypress/videos/
+        retention-days: 30
+        
+    - name: Publish HTML Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: html-report
+        path: cypress/reports/combined-report.html

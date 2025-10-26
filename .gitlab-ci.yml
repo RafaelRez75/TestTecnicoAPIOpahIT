@@ -1,0 +1,18 @@
+stages:
+  - test
+
+api_tests:
+  stage: test
+  image: cypress/base:18
+  script:
+    - npm install
+    - npm run test:ci
+  artifacts:
+    when: always
+    paths:
+      - cypress/reports/
+      - cypress/screenshots/
+      - cypress/videos/
+    reports:
+      junit: cypress/reports/junit/*.xml
+    expire_in: 1 week
